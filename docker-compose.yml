@@ -1,0 +1,30 @@
+version: "3.8"
+services: 
+    test-app:
+        # image: '40595b1e2f98'
+
+        build: 
+            context: ./
+            dockerfile: Dockerfile.Dev
+        # port mapping - separated by colon
+        # We have to specify - in the beginning to tell docker that it's an array here
+        ports: 
+            - 3000:3000
+        # Defineing the restart policy
+        restart: "always"
+        stdin_open: true
+        # When you have volumes you don't need the `COPY . .` command in the Dockerfile.Dev
+        volumes:
+            - /app/node_modules
+            - .:/app
+       
+    test-app-test:
+        build: 
+            context: ./
+            dockerfile: Dockerfile.Dev
+        volumes:
+            - /app/node_modules
+            - .:/app
+        # command is used to run some specific command
+        command: 
+            "npm run test"
