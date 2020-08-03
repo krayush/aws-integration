@@ -7,6 +7,6 @@ COPY package.json yarn.lock ./
 RUN yarn install
 
 # This command is not required if you have a volume
-# COPY . .
+COPY . .
 
 CMD ["npm", "run", "start"]
