@@ -11,10 +11,10 @@ scripts:
 deploy:
     provider: elasticbeanstalk
     access_key_id: 
-        secure: "Encrypted <access-key-id>=${access_key_id}"
+        secure: "Encrypted ${access_key_id}="
     secret_access_key:
-        secure: "Encypted <secret-access-key>="
+        secure: "Encypted ${secret_access_key}="
     region: "ap-south-1"
     app: "aws-integration"
     env: "AwsIntegration-env"
-    bucket_name: "elasticbeanstalk-ap-south-1-105609268698"
+    bucket_name: ${s3_bucket}
